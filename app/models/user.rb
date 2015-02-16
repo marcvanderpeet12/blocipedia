@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+ has_many :wikis
+
  after_create :set_default_value
 
  def basic_member?
@@ -23,5 +25,5 @@ class User < ActiveRecord::Base
  def set_default_value
    self.update_attribute(:role, "basic_member")
  end
- 
+
 end

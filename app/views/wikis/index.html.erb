@@ -1,0 +1,14 @@
+<h1>Public wikis </h1>
+
+  <%= @wikis.each do |wiki| %>
+  
+  <p>Title: <%= wiki.title %> </p>
+  <p>Body:  <%= wiki.body %></p>
+  <p><%= link_to wiki.title, wiki_path(wiki.id) %></p>
+  <p> <%= link_to "", wiki, method: :delete, class: 'glyphicon glyphicon-ok' %>
+  
+  <% end %>
+
+  <p>
+  <%= link_to "New wiki", new_wiki_path %>
+  </p>

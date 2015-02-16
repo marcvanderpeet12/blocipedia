@@ -1,0 +1,20 @@
+<%= form_for @wiki do |form| %>
+
+ <%= form.label :title %>
+ <%= form.text_area :title, rows: 2, class: 'form-control', placeholder: "Enter post body" %>
+
+ <%= form.label :body %>
+ <%= form.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
+
+ <% if current_user.administrator? || current_user.premium_member? %>
+ <!-- Waarom werkt hier - if current_user.role?(:admin) niet? %>-->
+  
+    <%= form.label :private, class: 'checkbox' do %>
+    <%= form.check_box :private %> Private wiki
+    
+    <% end %>
+  <% end %>
+
+ <%= form.submit 'Save' %>
+
+<% end %>

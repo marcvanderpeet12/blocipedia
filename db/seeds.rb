@@ -1,6 +1,9 @@
+ require 'faker'
+
+
  # Create an admin user
  admin = User.new(
-   email:    'admin2@example.com',
+   email:    'admin1@example.com',
    password: 'helloworld',
    role:     'administrator'
  )
@@ -9,7 +12,7 @@
  
  # Create a moderator
  moderator = User.new(
-   email:    'moderator2@example.com',
+   email:    'moderator1@example.com',
    password: 'helloworld',
    role:     'moderator'
  )
@@ -18,8 +21,23 @@
  
  # Create a member
  member = User.new(
-   email:    'member2@example.com',
+   email:    'member1@example.com',
    password: 'helloworld'
  )
 
  member.save!
+
+ users = User.all
+
+
+ 15.times do
+   Wiki.create!(
+     title: Faker::Lorem.sentence,
+     body:  Faker::Lorem.paragraph,
+     user:  users.sample
+   )
+ end
+ wikis = Wiki.all
+ puts "Seeds finished"
+
+ 

@@ -14,6 +14,7 @@ class WikisController < ApplicationController
   def create
     @wiki = Wiki.new(wiki_params)
     @user = current_user
+    authorize @wiki
     if @wiki.save
       @user.wikis << @wiki
       flash[:notice] = "You successfully created a wiki!"
@@ -33,6 +34,20 @@ class WikisController < ApplicationController
       flash[:error] = "There was an error deleting the topic."
       render :show
     end
+  end
+
+  def edit
+    @wiki = Wiki.find(params[:id])
+  end
+
+  def update
+     @wiki = Wiki.find(params[:id])
+     if @wiki.update_attributes(wiki_params)
+       redirect_to @wiki
+     else
+       flash[:error] = "Error saving this wiki. Please try again"
+       render :edit
+     end
   end
 
   private

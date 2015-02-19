@@ -6,13 +6,14 @@
  <%= form.label :body %>
  <%= form.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
 
- <% if current_user.administrator? || current_user.premium_member? %>
+ <% if current_user.basic_member? %>
  <!-- Waarom werkt hier - if current_user.role?(:admin) niet? %>-->
   
+   <div class="form-group">
     <%= form.label :private, class: 'checkbox' do %>
     <%= form.check_box :private %> Private wiki
+   <% end %>
     
-    <% end %>
   <% end %>
 
  <%= form.submit 'Save' %>

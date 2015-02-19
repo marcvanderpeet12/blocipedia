@@ -10,11 +10,11 @@
  <!-- Waarom werkt hier - if current_user.role?(:admin) niet? %>-->
   
    <div class="form-group">
-    <%= form.label :private, class: 'checkbox' do %>
+    <%= form.label :private %>
     <%= form.check_box :private %> Private wiki
-   <% end %>
     
   <% end %>
+  </br>
 
  <%= form.submit 'Save' %>
 

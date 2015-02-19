@@ -3,25 +3,24 @@
 
  # Create an admin user
  admin = User.new(
-   email:    'admin1@example.com',
+   email:    'admin14@example.com',
    password: 'helloworld',
-   role:     'administrator'
  )
 
  admin.save!
- 
+ admin.update_attribute(:role, "administrator")
  # Create a moderator
  moderator = User.new(
-   email:    'moderator1@example.com',
+   email:    'moderator14@example.com',
    password: 'helloworld',
-   role:     'moderator'
+
  )
 
  moderator.save!
- 
+ moderator.update_attribute(:role, "moderator")
  # Create a member
  member = User.new(
-   email:    'member1@example.com',
+   email:    'member14@example.com',
    password: 'helloworld'
  )
 

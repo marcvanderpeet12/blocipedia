@@ -5,3 +5,15 @@
 <% if policy(@wiki).edit? %>
 <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
 <% end %>
+
+<div>
+  <%= form_for @wiki do |f| %>
+
+    <% @users.each do |user| %>
+    <%= f.check_box :user_ids, value: user.id %>
+    <p> <%= user.email %> </p>
+
+    <% end %>
+  <% end %>
+
+</div>

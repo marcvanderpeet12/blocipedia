@@ -4,11 +4,15 @@
 
 <h1>Add collaborators</h1>
 
+<%= link_to 'Add Collaborator', new_wiki_collaboration_path(@wiki) %>
+
 <div class="collaboratorbox">
       <%= form_for @wiki do |f| %>
         <% @users.each do |user| %>
         <p><%= check_box_tag 'user_ids[]', user.id %>
-        <%= label_tag 'user_ids[]', user.email %> </p>
+        <%= label_tag 'user_ids[]', user.email %> 
+        <%= link_to [user, Collaboration.new], class: 'btn btn-primary', method: :post %>
+        </p>
         <% end %>
       <%= f.submit "Save Collaborators" %>
     </div>

@@ -1,4 +1,4 @@
-class CreateWikisAndCollaborators < ActiveRecord::Migration
+class AddWIkiToCollaborators < ActiveRecord::Migration
   def change
     create_table :collaborations do |t|
       

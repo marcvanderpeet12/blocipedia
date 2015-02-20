@@ -1,21 +1,11 @@
-<h2>Add collaborators to the wiki </h2>
+<h2>Add collaborators to the wiki <strong><%= @wiki.title %></strong></h2>
 
-<table>
-<tr> 
-  <th>Name</th>
-  <th>Email</th>
-  <th>Give Access</th>
-</tr>
-
-<tr> 
-<%= form_for (@collaboration) do |f| %>
+<%= form_for ([@wiki, @collaboration]) do |f| %>
 <% @users.each do |user| %>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td> <%= f.collection_select :user_id, User.all, :id, :name, prompt: true %> </td>
-</tr>
-<%= f.submit %>
-   <% end %>
-   </table>
-   <%= f.submit %>
+
+    <p><%= check_box_tag 'user_ids[]', user.id %>
+    <%= label_tag 'user_ids[]', user.email %> 
+    <% end %> </p>
+  
+  <p> <%= f.submit %> <p>
 <% end %>

@@ -6,6 +6,8 @@ class WikisController < ApplicationController
   def show
     @wiki = Wiki.find(params[:id])
     @users = User.all
+    @count = @wiki.collaborations.count
+    @collaboration = @wiki.collaborations
   end
 
   def new

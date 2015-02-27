@@ -1,11 +1,20 @@
 <div class="well">
-  <p>Title: <%= @wiki.title %></b></p>
+  <p>Title: <%= markdown_to_html @wiki.title %></b></p>
   <p>Body: <%= @wiki.body %></b></p>
-</div>
-<% if policy(@wiki).edit? %>
+
 <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
-<% end %>
-
-<div>
-
 </div>
+
+<div class="well">
+  <h3>Collaborators</h3>
+  <h5>This wiki has  <%= @count %> collaborators:</h5>
+    
+
+    <% @wiki.users.each do |user| %>
+     <p><%= user.email %>
+
+     <%= link_to "Delete", [user.collaborations.find_by_wiki_id(@wiki.id)], class: "btn btn-danger", method: :delete %> </p> 
+     
+    <% end %>
+        
+ </div>  

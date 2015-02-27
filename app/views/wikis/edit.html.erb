@@ -2,9 +2,23 @@
 
 </br>
 
+
+<% if false %>
+
+        <ul>
+        <% @wiki.collaborations.each do |collaboration| %>
+        <li><%= collaboration.users.email %> <%= link_to "Delete", collaboration_path(collaboration), method: :delete %></li>
+        
+        <% end %>
+        </ul>
+
+<% end %>
+
 <h1>Add collaborators</h1>
 
 <%= link_to 'Add Collaborator', new_wiki_collaboration_path(@wiki) %>
+
+<% if false %>
 
 <div class="collaboratorbox">
       <%= form_for @wiki do |f| %>
@@ -16,4 +30,6 @@
         <% end %>
       <%= f.submit "Save Collaborators" %>
     </div>
+<% end %>
+
 <% end %>

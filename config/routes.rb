@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'wikis/new'
 
+  resources :users
+
   resources :charges, only: [:new, :create]
   resources :collaborations, :only => [:new, :destroy]
   

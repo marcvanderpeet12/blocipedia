@@ -1,11 +1,29 @@
-<h2>Add collaborators to the wiki <strong><%= @wiki.title %></strong></h2>
 
-<%= form_for ([@wiki, @collaboration]) do |f| %>
-<% @users.each do |user| %>
+<div class="well">
+  <h4>Add collaborators to the wiki </h4>
+  <strong><%= @wiki.title %></strong></h2>
+</div>
 
-    <p><%= check_box_tag 'user_ids[]', user.id %>
-    <%= label_tag 'user_ids[]', user.email %> 
-    <% end %> </p>
-  
-  <p> <%= f.submit %> <p>
-<% end %>
+<br/>
+<br/>
+
+<div class="well">
+  <%= form_for ([@wiki, @collaboration]) do |f| %>
+   <% @users.each do |user| %>
+
+    <!-- if this user has no collaboration on this wiki -->
+    <!-- if user is not myself -->
+    <!-- I should be able to replace check_box_tag bij f.checkbox right? -->
+
+
+    <p>
+     <%= check_box_tag 'user_ids[]', user.id %>
+     <%= label_tag 'user_ids[]', user.email %> 
+     <% end %> 
+    </p>
+        
+     <p> <%= f.submit %> <p>
+     <% end %>
+
+</div>
+

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150220092033) do
+ActiveRecord::Schema.define(version: 20150221174036) do
+
+  create_table "amounts", force: :cascade do |t|
+    t.integer  "default",    default: 1500
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "collaborations", force: :cascade do |t|
     t.integer  "user_id"
